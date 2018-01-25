@@ -1,0 +1,15 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {},
+	"variables": {
+		"base64Object": "[base64({'one': 'a', 'two': 'b'})]"
+	},
+	"resources": [],
+	"outputs": {
+		"base64ToJsonOutput": {
+			"type": "object",
+			"value": "[base64ToJson(variables('base64Object'))]"
+		}
+	}
+}
