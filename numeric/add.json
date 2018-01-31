@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"addResult": {
+            "type": "int",
+            "value": "[add(5, 3)]"
+        }
+	}
 }
