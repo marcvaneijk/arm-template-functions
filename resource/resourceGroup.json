@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs":  {
+        "resourceGroupOutput": {
+            "value": "[resourceGroup()]",
+            "type" : "object"
+        }
+    }
 }
