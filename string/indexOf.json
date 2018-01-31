@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"indexOfOutput": {
+            "value": "[indexOf('test', 't')]",
+            "type" : "int"
+        }
+	}
 }

@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"endsWidthOutput": {
+            "value": "[endsWith('abcdef', 'ef')]",
+            "type" : "bool"
+        }
+	}
 }

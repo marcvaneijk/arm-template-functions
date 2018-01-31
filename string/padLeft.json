@@ -1,8 +1,18 @@
 {
 	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
 	"contentVersion": "1.0.0.0",
-	"parameters": {},
+	"parameters": {
+		"testString": {
+            "type": "string",
+            "defaultValue": "123"
+        }
+	},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"padLeftOuput": {
+            "type": "string",
+            "value": "[padLeft(parameters('testString'),10,'0')]"
+        }
+	}
 }

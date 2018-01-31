@@ -1,9 +1,14 @@
 {
 	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
 	"contentVersion": "1.0.0.0",
-	"parameters": {},
+	"parameters": {
+		"jsonString": {
+            "type": "string",
+            "defaultValue": "{'one': 'a', 'two': 'b'}"
+        }
+	},
 	"variables": {
-		"base64Object": "[base64({'one': 'a', 'two': 'b'})]"
+		"base64Object": "[base64(parameters('jsonString'))]"
 	},
 	"resources": [],
 	"outputs": {

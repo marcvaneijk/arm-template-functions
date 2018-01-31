@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"guidOutput": {
+            "value": "[guid(resourceGroup().id)]",
+            "type": "string"
+        }
+	}
 }

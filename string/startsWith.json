@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"startsWithOuput": {
+            "value": "[startsWith('abcdef', 'ab')]",
+            "type" : "bool"
+        }
+	}
 }

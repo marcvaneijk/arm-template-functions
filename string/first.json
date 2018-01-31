@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"firstOutput": {
+            "type": "string",
+            "value": "[first('One Two Three')]"
+        }
+	}
 }

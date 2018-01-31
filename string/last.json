@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"lastOutput": {
+            "type": "string",
+            "value": "[last('One Two Three')]"
+        }
+	}
 }

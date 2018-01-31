@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"uriOutput": {
+            "type": "string",
+            "value": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]"
+        }
+	}
 }

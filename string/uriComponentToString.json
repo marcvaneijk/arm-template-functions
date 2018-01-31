@@ -2,7 +2,15 @@
 	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
 	"contentVersion": "1.0.0.0",
 	"parameters": {},
-	"variables": {},
+	"variables": {
+		"uri": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]",
+        "uriComponent": "[uriComponent(variables('uri'))]" 
+	},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"uriComponentToStringOutput": {
+            "type": "string",
+            "value": "[uriComponentToString(variables('uriComponent'))]"
+        }
+	}
 }
