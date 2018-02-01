@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"greaterOutput": {
+            "type": "bool",
+            "value": "[greater(6, 5)]"
+        }
+	}
 }

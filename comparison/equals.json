@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"equalsOutput": {
+            "type": "bool",
+            "value": "[equals(5, 5)]"
+        }
+	}
 }

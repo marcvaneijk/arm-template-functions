@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"greaterOrEqualsOutput": {
+            "type": "bool",
+            "value": "[greaterOrEquals(5, 5)]"
+        }
+	}
 }

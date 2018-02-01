@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"lessOutput": {
+            "type": "bool",
+            "value": "[less(4, 5)]"
+        }
+	}
 }
