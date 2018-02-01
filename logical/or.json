@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"orOutput": {
+            "value": "[or(bool('true'), bool('false'))]",
+            "type": "bool"
+        }
+	}
 }

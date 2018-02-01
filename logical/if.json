@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"ifOutput": {
+			"type": "string",
+			"value": "[if(equals('a', 'a'), 'yes', 'no')]"
+		}
+	}
 }

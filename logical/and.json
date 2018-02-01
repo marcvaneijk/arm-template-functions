@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"andOutput": {
+            "value": "[and(bool('true'), bool('false'))]",
+            "type": "bool"
+        }
+	}
 }

@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"notOutput": {
+            "value": "[not(bool('true'))]",
+            "type": "bool"
+        }
+	}
 }
