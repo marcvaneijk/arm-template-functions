@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"deploymentOutput": {
+            "value": "[deployment()]",
+            "type" : "object"
+        }
+	}
 }
