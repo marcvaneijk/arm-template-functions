@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"jsonOutput": {
+            "type": "object",
+            "value": "[json('{\"a\": \"b\"}')]"
+        }
+	}
 }

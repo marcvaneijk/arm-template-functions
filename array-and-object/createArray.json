@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"creatArrayOutput": {
+            "type": "array",
+            "value": "[createArray('a', 'b', 'c')]"
+        }
+	}
 }
