@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"subOutput": {
+            "type": "int",
+            "value": "[sub(7, 3)]"
+        }
+	}
 }

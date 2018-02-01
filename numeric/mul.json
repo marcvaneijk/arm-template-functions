@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"mulOutput": {
+            "type": "int",
+            "value": "[mul(3, 5)]"
+        }
+	}
 }

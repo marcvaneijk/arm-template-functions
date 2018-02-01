@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"divOutput": {
+            "type": "int",
+            "value": "[div(12, 3)]"
+        }
+	}
 }

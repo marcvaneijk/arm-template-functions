@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"minOutput": {
+            "type": "int",
+            "value": "[min(0,3,2,5,4)]"
+        }
+	}
 }

@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"maxOutput": {
+            "type": "int",
+            "value": "[max(0,3,2,5,4)]"
+        }
+	}
 }

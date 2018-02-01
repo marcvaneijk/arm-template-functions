@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"modOutput": {
+            "type": "int",
+            "value": "[mod(7, 3)]"
+        }
+	}
 }
