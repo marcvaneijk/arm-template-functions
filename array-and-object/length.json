@@ -14,7 +14,7 @@
 	"variables": {},
 	"resources": [],
 	"outputs": {
-		"arrayLength": {
+		"lengthOutput": {
 			"type": "int",
 			"value": "[length(parameters('testArray'))]"
 		}

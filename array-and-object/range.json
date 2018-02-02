@@ -4,5 +4,10 @@
 	"parameters": {},
 	"variables": {},
 	"resources": [],
-	"outputs": {}
+	"outputs": {
+		"rangeOutput": {
+            "type": "array",
+            "value": "[range(5,3)]"
+        }
+	}
 }

@@ -7,7 +7,7 @@
 	},
 	"resources": [],
 	"outputs": {
-		"parametersOutput":{
+		"variablesOutput":{
 			"type": "string",
 			"value": "[variables('testString')]"
 		}
