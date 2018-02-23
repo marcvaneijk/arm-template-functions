@@ -1,15 +1,15 @@
-﻿### Using Test-AzureRmDeployment
-
-Login-AzureRmAccount
-Get-AzureRmSubscription -SubscriptionName "mavane" | Select-AzureRmSubscription 
-
+﻿$templateFunctions = get-childitem C:\git\arm-template-functions -File -Filter *.json -Recurse
 
 $result = @()
 $count = 1
-$percentage = 100/$templatefunctions[0..5].count
+$percentage = 100/$templateFunctions.count
 
 
-ForEach ($function in $templatefunctions[0..5]) {
+ForEach ($function in $templateFunctions) {
+
+    $test = New-Object -TypeName PSObject
+    $test | Add-Member -Type NoteProperty -Name type -Value $function.Directory.Name
+    $test | Add-Member -Type NoteProperty -Name templateFunction -Value $function.BaseName
 
     try{
         $DebugPreference = 'Continue'
@@ -18,15 +18,17 @@ ForEach ($function in $templatefunctions[0..5]) {
         $message = ($output | Where-Object { $_ -like "*HTTP RESPONSE*"}).Message
         $start = $message.IndexOf('Status Code:')+14
         $end = $message.substring($start).IndexOf('Headers:')-4
-        $result += @{($function.Directory.Name + '.' + $function.BaseName) = $message.substring($start,$end)}  
+        
+        $test | Add-Member -Type NoteProperty -Name result -Value $message.substring($start,$end)
     }
     catch{
-        $result += @{($function.Directory.Name + '.' + $function.BaseName) = "Failed"}
+        $test | Add-Member -Type NoteProperty -Name result -Value "Failed"
     }
 
+    $result += $test
 
-    Write-Progress -Activity "Search in Progress" -Status "($function.Directory.Name + '.' + $function.BaseName)" -PercentComplete [int]($percentage*$count)
-    $count+1
+    Write-Progress -Activity "Testing $count of $($templateFunctions.count)" -Status "$($function.Directory.Name + ' | ' + $function.BaseName)" -PercentComplete ($percentage*$count)
+    $count = $count+1
 }
 
 $result
