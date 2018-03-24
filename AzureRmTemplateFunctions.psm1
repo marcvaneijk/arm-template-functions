@@ -1,8 +1,6 @@
-﻿# Connect to your Azure environment with PowerShell.
-# Update the $localClone variable with the path the local clone of this repository
-# $localClone = "C:\git\arm-template-functions"
-$guid = ([guid]::NewGuid()).guid.replace('-','')
-$function = get-childitem $path -File -Filter *.json -Recurse
+﻿# Connect to your Azure environment with PowerShell
+# Select the desired subscritpion
+
 
 function Test-AzureRMTemplateFunctions {
     [cmdletbinding()]
@@ -21,13 +19,15 @@ function Test-AzureRMTemplateFunctions {
             Break
         }  
         Else {  
-             New-AzureRmResourceGroup -Name $Guid -Location $Location  
+            Write-Verbose "Creating Resource Group..." -Verbose
+            New-AzureRmResourceGroup -Name $Guid -Location $Location  
         } 
 
         # Create Storage Account
         $StorageAccountName = 'armtf' + $Guid.replace('-','').subString(0,18)
 
-        New-AzureRmStorageAccount -Name $StorageAccountName -ResourceGroupName $Guid -Location $Location -SkuName Standard_LRS
+        Write-Verbose "Creating Storage Account. This can take a moment..." -Verbose
+        New-AzureRmStorageAccount -Name $StorageAccountName -ResourceGroupName $Guid -Location $Location -SkuName Standard_LRS -Verbose
 
             }
     PROCESS {
@@ -68,13 +68,16 @@ function Test-AzureRMTemplateFunctions {
 
             $result += $test
 
-            Write-Progress -Activity "Testing $count of $($templateFunctions.count)" -Status "$($function.Directory.Name + ' | ' + $function.BaseName)" -PercentComplete ($percentage*$count)
+            Write-Progress -Activity "Testing template function $count of $($templateFunctions.count)" -Status "$($function.Directory.Name + ' | ' + $function.BaseName)" -PercentComplete ($percentage*$count)
             $count = $count+1
         }
     }
     END {
+        Write-Verbose "Deleting temporary resource group and storage account. This can take a moment..." -Verbose
         Remove-AzureRmResourceGroup -Name $Guid -Force
-        return $result
+
+        Write-Verbose "The result of the test" -Verbose
+        return ($result | select-object type, templateFunction, result)
     }
     
 }
