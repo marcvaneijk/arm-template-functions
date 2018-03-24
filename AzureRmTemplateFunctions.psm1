@@ -20,14 +20,14 @@ function Test-AzureRMTemplateFunctions {
         }  
         Else {  
             Write-Verbose "Creating Resource Group..." -Verbose
-            New-AzureRmResourceGroup -Name $Guid -Location $Location  
+            $rg = New-AzureRmResourceGroup -Name $Guid -Location $Location
         } 
 
         # Create Storage Account
         $StorageAccountName = 'armtf' + $Guid.replace('-','').subString(0,18)
 
         Write-Verbose "Creating Storage Account. This can take a moment..." -Verbose
-        New-AzureRmStorageAccount -Name $StorageAccountName -ResourceGroupName $Guid -Location $Location -SkuName Standard_LRS -Verbose
+        $sa = New-AzureRmStorageAccount -Name $StorageAccountName -ResourceGroupName $Guid -Location $Location -SkuName Standard_LRS -Verbose
 
             }
     PROCESS {
@@ -74,10 +74,9 @@ function Test-AzureRMTemplateFunctions {
     }
     END {
         Write-Verbose "Deleting temporary resource group and storage account. This can take a moment..." -Verbose
-        Remove-AzureRmResourceGroup -Name $Guid -Force
+        Remove-AzureRmResourceGroup -Name $Guid -Force | Out-Null
 
-        Write-Verbose "The result of the test" -Verbose
-        return ($result | select-object type, templateFunction, result)
+        return $result
     }
     
 }
