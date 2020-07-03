@@ -29,7 +29,7 @@ cd arm-template-functions-master
 Import-Module .\AzureRmTemplateFunctions.psm1
 
 # Run the tests
-Test-AzureRMTemplateFunctions -Path .\
+Test-AzTemplateFunctions -Path .\ -Location <RESOURCEGROUP_LOCATION>
 ```
 
 
