@@ -2,7 +2,7 @@
 # Select the desired subscritpion
 
 
-function Test-AzureRMTemplateFunctions {
+function Test-AzTemplateFunctions {
     [cmdletbinding()]
     Param (
     [string]$Path,
@@ -13,21 +13,21 @@ function Test-AzureRMTemplateFunctions {
         # Create Resource Group
         $Guid = ([guid]::NewGuid()).guid
         
-        $Exists = Get-AzureRmResourceGroup -Name $Guid -Location $Location -ErrorAction SilentlyContinue  
+        $Exists = Get-AzResourceGroup -Name $Guid -Location $Location -ErrorAction SilentlyContinue  
         If ($Exists){ 
             Write-Error "Resource Group already exists"  
             Break
         }  
         Else {  
             Write-Verbose "Creating Resource Group..." -Verbose
-            $rg = New-AzureRmResourceGroup -Name $Guid -Location $Location
+            $rg = New-AzResourceGroup -Name $Guid -Location $Location
         } 
 
         # Create Storage Account
         $StorageAccountName = 'armtf' + $Guid.replace('-','').subString(0,18)
 
         Write-Verbose "Creating Storage Account. This can take a moment..." -Verbose
-        $sa = New-AzureRmStorageAccount -Name $StorageAccountName -ResourceGroupName $Guid -Location $Location -SkuName Standard_LRS -Verbose
+        $sa = New-AzStorageAccount -Name $StorageAccountName -ResourceGroupName $Guid -Location $Location -SkuName Standard_LRS -Verbose
 
             }
     PROCESS {
@@ -54,7 +54,7 @@ function Test-AzureRMTemplateFunctions {
 
             try{
                 $DebugPreference = 'Continue'
-                $output = Test-AzureRmResourceGroupDeployment -ResourceGroupName $Guid -TemplateFile $function.FullName -TemplateParameterObject $templateParameterObject 5>&1 -ErrorAction SilentlyContinue
+                $output = Test-AzResourceGroupDeployment -ResourceGroupName $Guid -TemplateFile $function.FullName -TemplateParameterObject $templateParameterObject 5>&1 -ErrorAction SilentlyContinue
                 $DebugPreference = 'SilentlyContinue'
                 $message = ($output | Where-Object { $_ -like "*HTTP RESPONSE*"}).Message
                 $start = $message.IndexOf('Status Code:')+14
@@ -74,7 +74,7 @@ function Test-AzureRMTemplateFunctions {
     }
     END {
         Write-Verbose "Deleting temporary resource group and storage account. This can take a moment..." -Verbose
-        Remove-AzureRmResourceGroup -Name $Guid -Force | Out-Null
+        Remove-AzResourceGroup -Name $Guid -Force | Out-Null
 
         return $result
     }
